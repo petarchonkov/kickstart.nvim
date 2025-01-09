@@ -249,6 +249,11 @@ require('lazy').setup({
   --
   -- See `:help gitsigns` to understand what the configuration keys do
 
+  { -- iron interactvive repl for python
+    'hkupty/iron.nvim',
+    opts = {},
+  },
+
   { -- Autoresize split windows
     'nvim-focus/focus.nvim',
     version = '*',
@@ -651,6 +656,28 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+
+        pylsp = {
+          pylsp = {
+            plugins = {
+              -- formatter options
+              black = { enabled = true },
+              autopep8 = { enabled = false },
+              yapf = { enabled = false },
+              -- linter options
+              pylint = { enabled = true, executable = 'pylint' },
+              ruff = { enabled = false },
+              pyflakes = { enabled = false },
+              pycodestyle = { enabled = false },
+              -- type checker
+              pylsp_mypy = { enabled = true },
+              -- auto-completion options
+              jedi_completion = { fuzzy = true },
+              -- import sorting
+              isort = { enabled = true },
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = { ... },
